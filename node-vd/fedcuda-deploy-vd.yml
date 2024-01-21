@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fedcuda-deployment-vd
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fedcuda-vd
+  template:
+    metadata:
+      labels:
+        app: fedcuda-vd
+    spec:
+      nodeSelector:
+        key: vd
+      containers:
+      - name: fedcuda-vd
+        image: dwnusa/fedcuda:v0.1
+        ports:
+          - containerPort: 22
