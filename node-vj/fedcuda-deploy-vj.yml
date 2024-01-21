@@ -19,3 +19,15 @@ spec:
         image: dwnusa/fedcuda:v0.1
         ports:
           - containerPort: 22
+        resources:
+          requests:
+            nvidia.com/gpu: 1
+          limits:
+            nvidia.com/gpu: 1
+        volumeMounts:
+        - name: fedcuda-volume
+          mountPath: /root/data
+      volumes:
+      - name: fedcuda-volume
+        persistentVolumeClaim:
+          claimName: fedcuda-pvc-vj
