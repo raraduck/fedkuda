@@ -8,12 +8,12 @@
   tasks:
       - name: Copy python script to pods
         copy:
-          src: "scripts/main.py"
-          dest: "main.py"
+          src: "scripts/check_cuda.py"
+          dest: "check_cuda.py"
 
       - name: Execute Script
         command:
-          cmd: "python main.py"
+          cmd: "python check_cuda.py"
         register: res
 
       - name: debug
