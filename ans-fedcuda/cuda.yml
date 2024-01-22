@@ -8,7 +8,7 @@
   tasks:
       - name: Copy python script to pods
         copy:
-          src: "main.py"
+          src: "scripts/main.py"
           dest: "main.py"
 
       - name: Execute Script
