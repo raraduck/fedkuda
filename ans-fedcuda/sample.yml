@@ -8,7 +8,7 @@
   tasks:
       - name: Check pwd
         command:
-          cmd: ls -al 
+          cmd: ls
         register: res
 
       - name: debug
