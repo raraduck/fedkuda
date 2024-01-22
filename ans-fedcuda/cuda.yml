@@ -1,0 +1,22 @@
+---
+- name: Check Cuda
+  hosts: "{{ grp }}"
+  strategy: free
+  become: yes
+  gather_facts: no
+    
+  tasks:
+      - name: Copy python script to pods
+        copy:
+          src: "main.py"
+          dest: "main.py"
+
+      - name: Execute Script
+        command:
+          cmd: "python main.py"
+        register: res
+
+      - name: debug
+        debug:
+          msg: "{{ res.stdout }}"
+
