@@ -1,0 +1,17 @@
+---
+- name: ls
+  hosts: "{{ grp }}"
+  strategy: free
+  become: yes
+  gather_facts: no
+    
+  tasks:
+      - name: Execute Script
+        command:
+          cmd: "ls"
+        register: res
+
+      - name: debug
+        debug:
+          msg: "{{ res.stdout }}"
+
