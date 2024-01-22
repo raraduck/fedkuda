@@ -8,7 +8,7 @@
   tasks:
       - name: Execute Script
         command:
-          cmd: "ls"
+          cmd: "python main.py"
         register: res
 
       - name: debug
