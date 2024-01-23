@@ -34,6 +34,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: fedcuda-deployment-vd
+  annotations:
+    kubernetes.io/change-cause: "fedcuda container installed torchvision as v0.2"
 spec:
   replicas: 1
   selector:
@@ -48,7 +50,7 @@ spec:
         key: vd
       containers:
       - name: fedcuda-vd
-        image: dwnusa/fedcuda:v0.1
+        image: dwnusa/fedcuda:v0.2
         ports:
           - containerPort: 22
         resources:
