@@ -6,6 +6,14 @@
   gather_facts: no
     
   tasks:
+      - name: Copy multiple files to pods
+        copy:
+          src: "scripts/{{ item }}"
+          dest: "{{ item }}"
+        with_items:
+          - main.py
+          - config-20240124.json
+
       - name: Execute Script
         command:
           cmd: "python main.py -c ./config-20240124.json"
