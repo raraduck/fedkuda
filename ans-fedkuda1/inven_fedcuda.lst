@@ -1,3 +1,0 @@
-[hpc]
-vd ansible_user=root ansible_host=10.246.246.33 ansible_port=30021
-vj ansible_user=root ansible_host=10.246.246.33 ansible_port=30022

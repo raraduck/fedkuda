@@ -1,0 +1,3 @@
+[submodule "ans-fedkuda"]
+	path = ans-fedkuda
+	url = git@github.com:raraduck/fedscript-202401-01.git
