@@ -8,7 +8,7 @@
   tasks:
       - name: Execute Script
         command:
-          cmd: "python main.py"
+          cmd: "python main.py -c ./config-20240124.json"
         register: res
 
       - name: debug
