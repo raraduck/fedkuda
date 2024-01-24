@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: fedcuda-pv-vd
+  name: fedcuda-pv-vj
   labels:
     type: local
 spec:
@@ -13,12 +13,12 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: manual
   hostPath:
-    path: /home2/dwnusa/2024_data
+    path: /home2/jennyk0321/2024_data
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: fedcuda-pvc-vd
+  name: fedcuda-pvc-vj
 spec:
   accessModes:
     - ReadWriteMany
@@ -33,23 +33,23 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fedcuda-deployment-vd
+  name: fedcuda-deployment-vj30022
   annotations:
-    kubernetes.io/change-cause: "fedcuda container installed torchvision as v0.2"
+    kubernetes.io/change-cause: "vj -> vj30022"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: fedcuda-vd
+      app: fedcuda-vj30022
   template:
     metadata:
       labels:
-        app: fedcuda-vd
+        app: fedcuda-vj30022
     spec:
       nodeSelector:
-        key: vd
+        key: vj
       containers:
-      - name: fedcuda-vd
+      - name: fedcuda-vj30022
         image: dwnusa/fedcuda:v0.2
         ports:
           - containerPort: 22
@@ -64,18 +64,18 @@ spec:
       volumes:
       - name: fedcuda-volume
         persistentVolumeClaim:
-          claimName: fedcuda-pvc-vd
+          claimName: fedcuda-pvc-vj
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: fedcuda-nodeport-vd
+  name: fedcuda-nodeport-vj30022
 spec:
   type: NodePort
   selector:
-    app: fedcuda-vd
+    app: fedcuda-vj30022
   ports:
     - protocol: TCP
       port: 22
       targetPort: 22
-      nodePort: 30021
+      nodePort: 30022
