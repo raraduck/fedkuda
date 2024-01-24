@@ -55,9 +55,9 @@ spec:
           - containerPort: 22
         resources:
           requests:
-            nvidia.com/gpu: 2
+            nvidia.com/gpu: 1
           limits:
-            nvidia.com/gpu: 2
+            nvidia.com/gpu: 1
         volumeMounts:
         - name: fedcuda-volume
           mountPath: /root/data
