@@ -13,3 +13,4 @@
 - [x] jenkinsfile-pull 로 SCM + webhook 적용 (test try 2)
 - [x] solokuda와 fedkuda jenkinsfile 추가 후, solokuda만 SCM 적용
 - [ ] models와 dataset 모듈 파일로 분리하기
+- [ ] logger 가 생성한 파일을 Fetch하도록 추가
