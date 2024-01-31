@@ -1,8 +1,6 @@
 [submodule "ans-fedkuda"]
 	path = ans-fedkuda
 	url = https://github.com/raraduck/fedscript-202401-01.git
-  branch = main
 [submodule "ans-feddata"]
 	path = ans-feddata
 	url = https://github.com/raraduck/feddata.git
-  branch = main
