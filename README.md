@@ -10,4 +10,5 @@
 - [ ] Cluster20_fedkuda-fed_MNIST의 stage3에서 mdl을 vd30021 모델을 지정하여 사용중이므로, 나중에 최적 파라미터 선별하여 수행
 
 #### 2024-01-31
+- [x] jenkinsfile-pull 로 SCM + webhook 적용
 - [ ] models와 dataset 모듈 파일로 분리하기
