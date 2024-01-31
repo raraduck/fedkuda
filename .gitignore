@@ -3,3 +3,4 @@ scripts/*.py
 __pycache__
 *.pt
 *.state
+*.log
