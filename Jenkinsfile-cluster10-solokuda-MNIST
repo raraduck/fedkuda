@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    stages {
+        // Stage1
+        stage('Initially Deploy Model & Scripts') {
+            steps {
+                script {
+                    bat '''
+                    echo "Initialilze Model"
+                    '''
+                    bat '''
+                    ssh jennyk0321@10.246.246.36 "cd /home2/jennyk0321/workspace/fedkuda/ans-fedkuda && \
+                    ansible-playbook -e grp=cluster10 02_init_deploy.yml"
+                    '''
+                }
+            }
+        }
+        
+        // Stage2
+        stage('Run Solo') {
+            steps {
+                script {
+                    bat '''
+                    ssh jennyk0321@10.246.246.36 "cd /home2/jennyk0321/workspace/fedkuda/ans-fedkuda && \
+                    ansible-playbook -e 'grp=cluster10' 02_solo.yml"
+                    '''
+                }
+            }
+        }
+    }
+}

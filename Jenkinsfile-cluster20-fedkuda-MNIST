@@ -1,0 +1,68 @@
+pipeline {
+    agent any
+
+    stages {
+        // Stage1
+        stage('Initially Deploy Scripts') {
+            steps {
+                script {
+                    bat '''
+                    ssh jennyk0321@10.246.246.36 "cd /home2/jennyk0321/workspace/fedkuda/ans-fedkuda && \
+                    ansible-playbook -e grp=cluster20 03_init_deploy.yml"
+                    '''
+                }
+            }
+        }
+        
+        // Stage2
+        stage('Initialilze Model from worker nodes') {
+            steps {
+                script {
+                    bat '''
+                    ssh jennyk0321@10.246.246.36 "cd /home2/jennyk0321/workspace/fedkuda/ans-fedkuda && \
+                    ansible-playbook -e 'grp=cluster20' 03_init_model.yml"
+                    '''
+                }
+            }
+        }
+        
+        // Stage3
+        stage('Deploy initial Model') {
+            steps {
+                script {
+                    bat """
+                    ssh jennyk0321@10.246.246.36 "cd /home2/jennyk0321/workspace/fedkuda/ans-fedkuda && \
+                    ansible-playbook -e 'grp=cluster20 rnd=0 mdl=Init_vd30021_0.state' 03_deploy_model.yml"
+                    """
+                }
+            }
+        }
+        
+        // Stage4
+        stage('Federated Training Loop') {
+            steps {
+                script {
+                    for(int i = 1; i <= 5; i++) {
+                        bat """
+                        ssh jennyk0321@10.246.246.36 \"cd /home2/jennyk0321/workspace/fedkuda/ans-fedkuda && \
+                        ansible-playbook -e 'grp=cluster20 rnd=${i}' 03_fed.yml && \
+                        ansible-playbook -e 'grp=cluster20 rnd=${i}' 03_center.yml && \
+                        ansible-playbook -e 'grp=cluster20 rnd=${i} mdl=Cent_avg_${i}.state' 03_deploy_model.yml\"
+                        """
+                    }
+                }
+            }
+        }
+        
+        // Stage5
+        stage('Fetch Best Model') {
+            steps {
+                script {
+                    bat '''
+                    echo "Fetch Best Model"
+                    '''
+                }
+            }
+        }
+    }
+}
