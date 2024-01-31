@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    stages {
+        // Pull fedkuda repo
+        stage('pull fedkuda repo') {
+            steps {
+                script {
+                    bat '''
+                    ssh jennyk0321@10.246.246.36 "cd /home2/jennyk0321/workspace/fedkuda && \
+                    git pull origin main --recurse-submodules && \
+                    git submodule update --init --recursive"
+                    '''
+                }
+            }
+        }
+        stage('Create folder') {
+            steps {
+                script {
+                    bat '''
+                    ssh jennyk0321@10.246.246.36 "cd /home2/jennyk0321/workspace/fedkuda/ans-fedkuda && \
+                    ansible-playbook 00_create_grp_folder.yml"
+                    '''
+                }
+            }
+        }
+    }
+}
