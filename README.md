@@ -1,9 +1,20 @@
 # FedKuda
-## Initialization requirements
+
+### 0. Cluster join
+```
+anp -i inventory/firstCluster/inventory.ini cluster.yml -v -b --become-user=root -e ansible_ssh_timeout=60 --limit vk02
+```
+
+### 1. Initialization requirements
 ```
 kubectl label nodes [node name] key=[node label]
-ex)
-kubectl label nodes vk02 key=vk
+ex> kubectl label nodes vk02 key=vk
+```
+### 2. ssh-copy-id
+```
+ssh-copy-id -i ~/.ssh/[pub key] root@[ip] -p [node port]
+ex> ssh-copy-id -i ~/.ssh/id_ed25519.pub root@10.246.246.23 -p 30023
+password: ****
 ```
 
 ### TODO: ans-fedkuda
