@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ssh-server-deployment-vj
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ssh-server-vj
+  template:
+    metadata:
+      labels:
+        app: ssh-server-vj
+    spec:
+      nodeSelector:
+        key: vj
+      containers:
+      - name: ssh-server-vj
+        image: rastasheep/ubuntu-sshd
+        ports:
+          - containerPort: 22

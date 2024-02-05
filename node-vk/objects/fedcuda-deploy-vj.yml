@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fedcuda-deployment-vj
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fedcuda-vj
+  template:
+    metadata:
+      labels:
+        app: fedcuda-vj
+    spec:
+      nodeSelector:
+        key: vj
+      containers:
+      - name: fedcuda-vj
+        image: dwnusa/fedcuda:v0.1
+        ports:
+          - containerPort: 22
+        resources:
+          requests:
+            nvidia.com/gpu: 1
+          limits:
+            nvidia.com/gpu: 1
+        volumeMounts:
+        - name: fedcuda-volume
+          mountPath: /root/data
+      volumes:
+      - name: fedcuda-volume
+        persistentVolumeClaim:
+          claimName: fedcuda-pvc-vj
