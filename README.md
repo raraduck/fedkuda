@@ -1,4 +1,10 @@
 # FedKuda
+## Initialization requirements
+```
+kubectl label nodes [node name] key=[node label]
+ex)
+kubectl label nodes vk02 key=vk
+```
 
 ### TODO: ans-fedkuda
 #### 2024-01-30

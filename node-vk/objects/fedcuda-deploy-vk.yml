@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fedcuda-deployment-vj
+  name: fedcuda-deployment-vk
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: fedcuda-vj
+      app: fedcuda-vk
   template:
     metadata:
       labels:
-        app: fedcuda-vj
+        app: fedcuda-vk
     spec:
       nodeSelector:
-        key: vj
+        key: vk
       containers:
-      - name: fedcuda-vj
-        image: dwnusa/fedcuda:v0.1
+      - name: fedcuda-vk
+        image: dwnusa/fedcuda:v0.2
         ports:
           - containerPort: 22
         resources:
@@ -30,4 +30,4 @@ spec:
       volumes:
       - name: fedcuda-volume
         persistentVolumeClaim:
-          claimName: fedcuda-pvc-vj
+          claimName: fedcuda-pvc-vk
