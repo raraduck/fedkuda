@@ -12,7 +12,7 @@ pipeline {
                     parallelStagesMap[stageName1] = {
                         echo "${stageName1} - Executing [900, 901, 902, 903]"
                         bat """
-                        ssh jennyk0321@10.246.246.36 \"cd kube-freesurfer && ls -al\"
+                        ssh jennyk0321@10.246.246.36 \"cd fedkuda/kube-freesurfer && ls -al\"
                         """
                     }
 
@@ -21,7 +21,7 @@ pipeline {
                     parallelStagesMap[stageName2] = {
                         echo "${stageName2} - Executing [904, 905, 906, 907]"
                         bat """
-                        ssh jennyk0321@10.246.246.36 \"cd kube-freesurfer && ls -al\"
+                        ssh jennyk0321@10.246.246.36 \"cd fedkuda/kube-freesurfer && ls -al\"
                         """
                     }
 
@@ -30,7 +30,7 @@ pipeline {
                     parallelStagesMap[stageName3] = {
                         echo "${stageName3} - Executing [908, 909, 910, 911]"
                         bat """
-                        ssh jennyk0321@10.246.246.36 \"cd kube-freesurfer && ls -al\"
+                        ssh jennyk0321@10.246.246.36 \"cd fedkuda/kube-freesurfer && ls -al\"
                         """
                     }
 
@@ -51,7 +51,7 @@ pipeline {
                     parallelStagesMap[stageName1] = {
                         echo "${stageName1} - Executing [912, 913, 914, 915]"
                         bat """
-                        ssh jennyk0321@10.246.246.36 \"cd kube-freesurfer && ls -al\"
+                        ssh jennyk0321@10.246.246.36 \"cd fedkuda/kube-freesurfer && ls -al\"
                         """
                     }
 
@@ -60,7 +60,7 @@ pipeline {
                     parallelStagesMap[stageName2] = {
                         echo "${stageName2} - Executing [916, 917, 918, 919]"
                         bat """
-                        ssh jennyk0321@10.246.246.36 \"cd kube-freesurfer && ls -al\"
+                        ssh jennyk0321@10.246.246.36 \"cd fedkuda/kube-freesurfer && ls -al\"
                         """
                     }
 
@@ -69,7 +69,7 @@ pipeline {
                     parallelStagesMap[stageName3] = {
                         echo "${stageName3} - Executing [920, 921, 922, 923]"
                         bat """
-                        ssh jennyk0321@10.246.246.36 \"cd kube-freesurfer && ls -al\"
+                        ssh jennyk0321@10.246.246.36 \"cd fedkuda/kube-freesurfer && ls -al\"
                         """
                     }
 
@@ -90,7 +90,7 @@ pipeline {
                     parallelStagesMap[stageName1] = {
                         echo "${stageName1} - Executing [924, 925, 926, 927]"
                         bat """
-                        ssh jennyk0321@10.246.246.36 \"cd kube-freesurfer && ls -al\"
+                        ssh jennyk0321@10.246.246.36 \"cd fedkuda/kube-freesurfer && ls -al\"
                         """
                     }
 
@@ -99,7 +99,7 @@ pipeline {
                     parallelStagesMap[stageName2] = {
                         echo "${stageName2} - Executing [928, 929, 930, 931]"
                         bat """
-                        ssh jennyk0321@10.246.246.36 \"cd kube-freesurfer && ls -al\"
+                        ssh jennyk0321@10.246.246.36 \"cd fedkuda/kube-freesurfer && ls -al\"
                         """
                     }
 
@@ -108,7 +108,7 @@ pipeline {
                     parallelStagesMap[stageName3] = {
                         echo "${stageName3} - Executing [932, 933, 934, 935]"
                         bat """
-                        ssh jennyk0321@10.246.246.36 \"cd kube-freesurfer && ls -al\"
+                        ssh jennyk0321@10.246.246.36 \"cd fedkuda/kube-freesurfer && ls -al\"
                         """
                     }
 
