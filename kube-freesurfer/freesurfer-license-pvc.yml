@@ -10,6 +10,9 @@ spec:
     requests:
       storage: 1Mi
   storageClassName: ""
+  selector:
+    matchLabels:
+      user: vd
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -22,6 +25,9 @@ spec:
     requests:
       storage: 1Mi
   storageClassName: ""
+  selector:
+    matchLabels:
+      user: vj
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -34,3 +40,6 @@ spec:
     requests:
       storage: 1Mi
   storageClassName: ""
+  selector:
+    matchLabels:
+      user: vk
