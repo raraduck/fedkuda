@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('INDEX: 1') {
+        stage('Round: 1 (904~918)') {
             steps {
                 script {
                     // 병렬 단계를 담을 맵
@@ -10,29 +10,30 @@ pipeline {
                     def idx = 1
                     def stageName1 = "Node ${idx} - vd"
                     parallelStagesMap[stageName1] = {
-                        echo "${stageName1} - Executing [900, 901, 902, 903]"
+                        echo "${stageName1} - Executing [904 905 906 907 908]"
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \\
-                        sed 's/\\\\\\${INDEX}/904/g' freesurfer-job-template.yml > temp-job-file.yml && \\
-                        cat temp-job-file.yml"
+                        freesurfer-parallel-5.sh vd dwnusa 904 905 906 907 908"
                         """
                     }
 
                     // 두 번째 병렬 작업
                     def stageName2 = "Node ${idx} - vj"
                     parallelStagesMap[stageName2] = {
-                        echo "${stageName2} - Executing [904, 905, 906, 907]"
+                        echo "${stageName2} - Executing [909 910 911 912 913]"
                         bat """
-                        ssh jennyk0321@10.246.246.36 \"cd workspace/fedkuda/kube-freesurfer && ls -al\"
+                        ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \\
+                        freesurfer-parallel-5.sh vj jennyk0321 909 910 911 912 913"
                         """
                     }
 
                     // 세 번째 병렬 작업
                     def stageName3 = "Node ${idx} - vk"
                     parallelStagesMap[stageName3] = {
-                        echo "${stageName3} - Executing [908, 909, 910, 911]"
+                        echo "${stageName3} - Executing [914 915 916 917 918]"
                         bat """
-                        ssh jennyk0321@10.246.246.36 \"cd workspace/fedkuda/kube-freesurfer && ls -al\"
+                        ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \\
+                        freesurfer-parallel-5.sh vk ksyint1111 914 915 916 917 918"
                         """
                     }
 
@@ -42,75 +43,39 @@ pipeline {
             }
         }
 
-        stage('INDEX: 2') {
+        stage('Round: 2 (919~933)') {
             steps {
                 script {
                     // 병렬 단계를 담을 맵
                     def parallelStagesMap = [:]
                     // 첫 번째 병렬 작업
-                    def idx = 2
+                    def idx = 1
                     def stageName1 = "Node ${idx} - vd"
                     parallelStagesMap[stageName1] = {
-                        echo "${stageName1} - Executing [912, 913, 914, 915]"
+                        echo "${stageName1} - Executing [919 920 921 922 923]"
                         bat """
-                        ssh jennyk0321@10.246.246.36 \"cd workspace/fedkuda/kube-freesurfer && ls -al\"
+                        ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \\
+                        freesurfer-parallel-5.sh vd dwnusa 919 920 921 922 923"
                         """
                     }
 
                     // 두 번째 병렬 작업
                     def stageName2 = "Node ${idx} - vj"
                     parallelStagesMap[stageName2] = {
-                        echo "${stageName2} - Executing [916, 917, 918, 919]"
+                        echo "${stageName2} - Executing [924 925 926 927 928]"
                         bat """
-                        ssh jennyk0321@10.246.246.36 \"cd workspace/fedkuda/kube-freesurfer && ls -al\"
+                        ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \\
+                        freesurfer-parallel-5.sh vj jennyk0321 924 925 926 927 928"
                         """
                     }
 
                     // 세 번째 병렬 작업
                     def stageName3 = "Node ${idx} - vk"
                     parallelStagesMap[stageName3] = {
-                        echo "${stageName3} - Executing [920, 921, 922, 923]"
+                        echo "${stageName3} - Executing [929 930 931 932 933]"
                         bat """
-                        ssh jennyk0321@10.246.246.36 \"cd workspace/fedkuda/kube-freesurfer && ls -al\"
-                        """
-                    }
-
-                    // 병렬 단계 실행
-                    parallel parallelStagesMap
-                }
-            }
-        }
-
-        stage('INDEX: 3') {
-            steps {
-                script {
-                    // 병렬 단계를 담을 맵
-                    def parallelStagesMap = [:]
-                    // 첫 번째 병렬 작업
-                    def idx = 3
-                    def stageName1 = "Node ${idx} - vd"
-                    parallelStagesMap[stageName1] = {
-                        echo "${stageName1} - Executing [924, 925, 926, 927]"
-                        bat """
-                        ssh jennyk0321@10.246.246.36 \"cd workspace/fedkuda/kube-freesurfer && ls -al\"
-                        """
-                    }
-
-                    // 두 번째 병렬 작업
-                    def stageName2 = "Node ${idx} - vj"
-                    parallelStagesMap[stageName2] = {
-                        echo "${stageName2} - Executing [928, 929, 930, 931]"
-                        bat """
-                        ssh jennyk0321@10.246.246.36 \"cd workspace/fedkuda/kube-freesurfer && ls -al\"
-                        """
-                    }
-
-                    // 세 번째 병렬 작업
-                    def stageName3 = "Node ${idx} - vk"
-                    parallelStagesMap[stageName3] = {
-                        echo "${stageName3} - Executing [932, 933, 934, 935]"
-                        bat """
-                        ssh jennyk0321@10.246.246.36 \"cd workspace/fedkuda/kube-freesurfer && ls -al\"
+                        ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \\
+                        freesurfer-parallel-5.sh vk ksyint1111 929 930 931 932 933"
                         """
                     }
 
