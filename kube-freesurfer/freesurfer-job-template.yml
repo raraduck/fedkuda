@@ -11,7 +11,6 @@ spec:
       - name: freesurfer-container
         image: freesurfer/freesurfer:7.2.0
         command: ["/bin/bash", "-c", "source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid P${IDX1} -i /root/data/FREESURFER/PPMI/P${IDX1}.nii -sd /root/data/FREESURFER/FREESURFER_PPMI -all"]
-MI -all"]
         resources:
           requests:
             cpu: "6000m"
@@ -44,7 +43,6 @@ spec:
       - name: freesurfer-container
         image: freesurfer/freesurfer:7.2.0
         command: ["/bin/bash", "-c", "source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid P${IDX2} -i /root/data/FREESURFER/PPMI/P${IDX2}.nii -sd /root/data/FREESURFER/FREESURFER_PPMI -all"]
-MI -all"]
         resources:
           requests:
             cpu: "6000m"
@@ -77,7 +75,6 @@ spec:
       - name: freesurfer-container
         image: freesurfer/freesurfer:7.2.0
         command: ["/bin/bash", "-c", "source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid P${IDX3} -i /root/data/FREESURFER/PPMI/P${IDX3}.nii -sd /root/data/FREESURFER/FREESURFER_PPMI -all"]
-MI -all"]
         resources:
           requests:
             cpu: "6000m"
@@ -110,7 +107,6 @@ spec:
       - name: freesurfer-container
         image: freesurfer/freesurfer:7.2.0
         command: ["/bin/bash", "-c", "source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid P${IDX4} -i /root/data/FREESURFER/PPMI/P${IDX4}.nii -sd /root/data/FREESURFER/FREESURFER_PPMI -all"]
-MI -all"]
         resources:
           requests:
             cpu: "6000m"
@@ -143,7 +139,6 @@ spec:
       - name: freesurfer-container
         image: freesurfer/freesurfer:7.2.0
         command: ["/bin/bash", "-c", "source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid P${IDX5} -i /root/data/FREESURFER/PPMI/P${IDX5}.nii -sd /root/data/FREESURFER/FREESURFER_PPMI -all"]
-MI -all"]
         resources:
           requests:
             cpu: "6000m"
