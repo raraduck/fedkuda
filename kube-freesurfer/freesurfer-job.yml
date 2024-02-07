@@ -22,4 +22,4 @@ spec:
           claimName: freesurfer-license-pvc-vd
       - name: data-volume
         persistentVolumeClaim:
-          claimName: fedkuda-pvc-vd
+          claimName: fedcuda-pvc-vd
