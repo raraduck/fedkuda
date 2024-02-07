@@ -17,7 +17,7 @@ pipeline {
                     }
 
                     // 두 번째 병렬 작업
-                    def stageName2 = "Node ${i} - vj"
+                    def stageName2 = "Node ${idx} - vj"
                     parallelStagesMap[stageName2] = {
                         echo "${stageName2} - Executing [904, 905, 906, 907]"
                         bat """
@@ -26,7 +26,7 @@ pipeline {
                     }
 
                     // 세 번째 병렬 작업
-                    def stageName3 = "Node ${i} - vk"
+                    def stageName3 = "Node ${idx} - vk"
                     parallelStagesMap[stageName3] = {
                         echo "${stageName3} - Executing [908, 909, 910, 911]"
                         bat """
@@ -56,7 +56,7 @@ pipeline {
                     }
 
                     // 두 번째 병렬 작업
-                    def stageName2 = "Node ${i} - vj"
+                    def stageName2 = "Node ${idx} - vj"
                     parallelStagesMap[stageName2] = {
                         echo "${stageName2} - Executing [916, 917, 918, 919]"
                         bat """
@@ -65,7 +65,7 @@ pipeline {
                     }
 
                     // 세 번째 병렬 작업
-                    def stageName3 = "Node ${i} - vk"
+                    def stageName3 = "Node ${idx} - vk"
                     parallelStagesMap[stageName3] = {
                         echo "${stageName3} - Executing [920, 921, 922, 923]"
                         bat """
@@ -95,7 +95,7 @@ pipeline {
                     }
 
                     // 두 번째 병렬 작업
-                    def stageName2 = "Node ${i} - vj"
+                    def stageName2 = "Node ${idx} - vj"
                     parallelStagesMap[stageName2] = {
                         echo "${stageName2} - Executing [928, 929, 930, 931]"
                         bat """
@@ -104,7 +104,7 @@ pipeline {
                     }
 
                     // 세 번째 병렬 작업
-                    def stageName3 = "Node ${i} - vk"
+                    def stageName3 = "Node ${idx} - vk"
                     parallelStagesMap[stageName3] = {
                         echo "${stageName3} - Executing [932, 933, 934, 935]"
                         bat """
