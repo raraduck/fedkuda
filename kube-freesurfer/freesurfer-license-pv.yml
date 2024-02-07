@@ -4,6 +4,7 @@ kind: PersistentVolume
 metadata:
   name: freesurfer-license-pv-vd
   labels:
+    type: freesurfer-license
     user: vd
 spec:
   capacity:
@@ -21,6 +22,7 @@ kind: PersistentVolume
 metadata:
   name: freesurfer-license-pv-vj
   labels:
+    type: freesurfer-license
     user: vj
 spec:
   capacity:
@@ -38,6 +40,7 @@ kind: PersistentVolume
 metadata:
   name: freesurfer-license-pv-vk
   labels:
+    type: freesurfer-license
     user: vk
 spec:
   capacity:

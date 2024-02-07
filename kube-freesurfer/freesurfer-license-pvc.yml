@@ -12,6 +12,7 @@ spec:
   storageClassName: ""
   selector:
     matchLabels:
+      type: freesurfer-license
       user: vd
 ---
 apiVersion: v1
@@ -27,6 +28,7 @@ spec:
   storageClassName: ""
   selector:
     matchLabels:
+      type: freesurfer-license
       user: vj
 ---
 apiVersion: v1
@@ -42,4 +44,5 @@ spec:
   storageClassName: ""
   selector:
     matchLabels:
+      type: freesurfer-license
       user: vk
