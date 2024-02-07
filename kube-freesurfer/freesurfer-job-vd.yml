@@ -17,10 +17,15 @@ spec:
         - name: data-volume
           mountPath: /root/data
       restartPolicy: Never
+      # volumes:
+      # - name: license-volume
+      #   persistentVolumeClaim:
+      #     claimName: freesurfer-license-pvc-vd
       volumes:
       - name: license-volume
-        persistentVolumeClaim:
-          claimName: freesurfer-license-pvc-vd
+        hostPath:
+          path: /home2/dwnusa/2024_data/FREESURFER/.license
+          type: File
       - name: data-volume
         persistentVolumeClaim:
           claimName: fedcuda-pvc-vd
