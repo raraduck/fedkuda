@@ -1,7 +1,32 @@
+---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: freesurfer-license-pvc
+  name: freesurfer-license-pvc-vd
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Mi
+  storageClassName: ""
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: freesurfer-license-pvc-vj
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Mi
+  storageClassName: ""
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: freesurfer-license-pvc-vk
 spec:
   accessModes:
     - ReadWriteOnce

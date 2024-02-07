@@ -8,23 +8,18 @@ spec:
       containers:
       - name: freesurfer-container
         image: freesurfer/freesurfer:7.2.0
-        command: ["/bin/bash", "-c", "source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid P900 -i /root/data/P900.nii -sd /root/output -all"]
+        command: ["/bin/bash", "-c", "source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid P900 -i /root/data/FREESURFER/PPMI/P900.nii -sd /root/data/FREESURFER/FREESURFER_PPMI -all"]
         volumeMounts:
         - name: license-volume
           mountPath: /usr/local/freesurfer/.license
           subPath: .license
         - name: data-volume
           mountPath: /root/data
-        - name: output-volume
-          mountPath: /root/output
       restartPolicy: Never
       volumes:
       - name: license-volume
         persistentVolumeClaim:
-          claimName: freesurfer-license-pvc
+          claimName: freesurfer-license-pvc-vd
       - name: data-volume
         persistentVolumeClaim:
-          claimName: freesurfer-data-pvc
-      - name: output-volume
-        persistentVolumeClaim:
-          claimName: freesurfer-output-pvc
+          claimName: fedkuda-pvc-vd
