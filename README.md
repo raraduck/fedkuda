@@ -31,3 +31,8 @@ password: ****
 - [x] solokuda와 fedkuda jenkinsfile 추가 후, solokuda만 SCM 적용
 - [ ] models와 dataset 모듈 파일로 분리하기
 - [ ] logger 가 생성한 파일을 Fetch하도록 추가
+
+####
+```
+sudo docker run -it --rm -v /home2/dwnusa/Downloads/.license:/usr/local/freesurfer/.license -v /home2/dwnusa/2024_data/FREESURFER/PPMI:/root/data -v /home2/dwnusa/2024_data/FREESURFER/FREESURFER_PPMI:/root/output freesurfer/freesurfer:7.2.0 /bin/bash -c "source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid 4139 -i /root/data/4139.nii -sd /root/output -all"
+```
