@@ -14,7 +14,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: ""
   hostPath:
-    path: /home2/dwnusa/2024_data/.license
+    path: /home2/dwnusa/2024_data/FREESURFER/.license
     type: File
 ---
 apiVersion: v1
@@ -32,7 +32,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: ""
   hostPath:
-    path: /home2/jennyk0321/2024_data/.license
+    path: /home2/jennyk0321/2024_data/FREESURFER/.license
     type: File
 ---
 apiVersion: v1
@@ -50,5 +50,5 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: ""
   hostPath:
-    path: /home2/ksyint1111/2024_data/.license
+    path: /home2/ksyint1111/2024_data/FREESURFER/.license
     type: File
