@@ -2,7 +2,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: freesurfer-job-${LABEL}-1
+  name: freesurfer-job-${LABEL}-${INDEX}
 spec:
   template:
     spec:
@@ -26,106 +26,7 @@ spec:
       volumes:
       - name: license-volume
         hostPath:
-          path: /home2/dwnusa/2024_data/FREESURFER/.license
-          type: File
-      - name: data-volume
-        persistentVolumeClaim:
-          claimName: fedcuda-pvc-${LABEL}
----
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: freesurfer-job-${LABEL}-2
-spec:
-  template:
-    spec:
-      nodeSelector:
-        key: ${LABEL}
-      containers:
-      - name: freesurfer-container
-        image: freesurfer/freesurfer:7.2.0
-        command: ["/bin/bash", "-c", "source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid P${INDEX} -i /root/data/FREESURFER/PPMI/P${INDEX}.nii -sd /root/data/FREESURFER/FREESURFER_PPMI -all"]
-        resources:
-          requests:
-            cpu: "5000m"
-          limits:
-            cpu: "6400m"
-        volumeMounts:
-        - name: license-volume
-          mountPath: /usr/local/freesurfer/.license
-        - name: data-volume
-          mountPath: /root/data
-      restartPolicy: Never
-      volumes:
-      - name: license-volume
-        hostPath:
-          path: /home2/dwnusa/2024_data/FREESURFER/.license
-          type: File
-      - name: data-volume
-        persistentVolumeClaim:
-          claimName: fedcuda-pvc-${LABEL}
----
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: freesurfer-job-${LABEL}-3
-spec:
-  template:
-    spec:
-      nodeSelector:
-        key: ${LABEL}
-      containers:
-      - name: freesurfer-container
-        image: freesurfer/freesurfer:7.2.0
-        command: ["/bin/bash", "-c", "source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid P${INDEX} -i /root/data/FREESURFER/PPMI/P${INDEX}.nii -sd /root/data/FREESURFER/FREESURFER_PPMI -all"]
-        resources:
-          requests:
-            cpu: "5000m"
-          limits:
-            cpu: "6400m"
-        volumeMounts:
-        - name: license-volume
-          mountPath: /usr/local/freesurfer/.license
-        - name: data-volume
-          mountPath: /root/data
-      restartPolicy: Never
-      volumes:
-      - name: license-volume
-        hostPath:
-          path: /home2/dwnusa/2024_data/FREESURFER/.license
-          type: File
-      - name: data-volume
-        persistentVolumeClaim:
-          claimName: fedcuda-pvc-${LABEL}
----
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: freesurfer-job-${LABEL}-4
-spec:
-  template:
-    spec:
-      nodeSelector:
-        key: ${LABEL}
-      containers:
-      - name: freesurfer-container
-        image: freesurfer/freesurfer:7.2.0
-        command: ["/bin/bash", "-c", "source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid P${INDEX} -i /root/data/FREESURFER/PPMI/P${INDEX}.nii -sd /root/data/FREESURFER/FREESURFER_PPMI -all"]
-        resources:
-          requests:
-            cpu: "5000m"
-          limits:
-            cpu: "6400m"
-        volumeMounts:
-        - name: license-volume
-          mountPath: /usr/local/freesurfer/.license
-        - name: data-volume
-          mountPath: /root/data
-      restartPolicy: Never
-      volumes:
-      - name: license-volume
-        hostPath:
-          path: /home2/dwnusa/2024_data/FREESURFER/.license
+          path: /home2/${USER}/2024_data/FREESURFER/.license
           type: File
       - name: data-volume
         persistentVolumeClaim:

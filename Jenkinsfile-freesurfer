@@ -12,7 +12,10 @@ pipeline {
                     parallelStagesMap[stageName1] = {
                         echo "${stageName1} - Executing [900, 901, 902, 903]"
                         bat """
-                        ssh jennyk0321@10.246.246.36 \"cd workspace/fedkuda/kube-freesurfer && ls -al\"
+                        ssh jennyk0321@10.246.246.36 \"cd workspace/fedkuda/kube-freesurfer && \
+                        job_file="freesurfer-job-template.yml" && \
+                        sed "s/\${INDEX}/904/g" freesurfer-job-template.yml > $job_file && \
+                        cat $job_file\"
                         """
                     }
 
