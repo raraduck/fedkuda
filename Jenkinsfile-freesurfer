@@ -13,7 +13,7 @@ pipeline {
                         echo "${stageName1} - Executing [904 905 906 907 908]"
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \\
-                        freesurfer-parallel-5.sh vd dwnusa 904 905 906 907 908"
+                        source freesurfer-parallel-5.sh vd dwnusa 904 905 906 907 908"
                         """
                     }
 
@@ -23,7 +23,7 @@ pipeline {
                         echo "${stageName2} - Executing [909 910 911 912 913]"
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \\
-                        freesurfer-parallel-5.sh vj jennyk0321 909 910 911 912 913"
+                        source freesurfer-parallel-5.sh vj jennyk0321 909 910 911 912 913"
                         """
                     }
 
@@ -33,7 +33,7 @@ pipeline {
                         echo "${stageName3} - Executing [914 915 916 917 918]"
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \\
-                        freesurfer-parallel-5.sh vk ksyint1111 914 915 916 917 918"
+                        source freesurfer-parallel-5.sh vk ksyint1111 914 915 916 917 918"
                         """
                     }
 
@@ -49,13 +49,13 @@ pipeline {
                     // 병렬 단계를 담을 맵
                     def parallelStagesMap = [:]
                     // 첫 번째 병렬 작업
-                    def idx = 1
+                    def idx = 2
                     def stageName1 = "Node ${idx} - vd"
                     parallelStagesMap[stageName1] = {
                         echo "${stageName1} - Executing [919 920 921 922 923]"
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \\
-                        freesurfer-parallel-5.sh vd dwnusa 919 920 921 922 923"
+                        source freesurfer-parallel-5.sh vd dwnusa 919 920 921 922 923"
                         """
                     }
 
@@ -65,7 +65,7 @@ pipeline {
                         echo "${stageName2} - Executing [924 925 926 927 928]"
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \\
-                        freesurfer-parallel-5.sh vj jennyk0321 924 925 926 927 928"
+                        source freesurfer-parallel-5.sh vj jennyk0321 924 925 926 927 928"
                         """
                     }
 
@@ -75,7 +75,7 @@ pipeline {
                         echo "${stageName3} - Executing [929 930 931 932 933]"
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \\
-                        freesurfer-parallel-5.sh vk ksyint1111 929 930 931 932 933"
+                        source freesurfer-parallel-5.sh vk ksyint1111 929 930 931 932 933"
                         """
                     }
 
