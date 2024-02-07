@@ -1,7 +1,8 @@
 ---
 apiVersion: batch/v1
 kind: Job
-metadat  n  name: freesurfer-job-${LBL}-${IDX1}
+metadata:
+  name: freesurfer-job-${LBL}-${IDX1}
 spec:
   template:
     spec:
@@ -33,7 +34,8 @@ spec:
 ---
 apiVersion: batch/v1
 kind: Job
-metadat  n  name: freesurfer-job-${LBL}-${IDX2}
+metadata:
+  name: freesurfer-job-${LBL}-${IDX2}
 spec:
   template:
     spec:
@@ -65,7 +67,8 @@ spec:
 ---
 apiVersion: batch/v1
 kind: Job
-metadat  n  name: freesurfer-job-${LBL}-${IDX3}
+metadata:
+  name: freesurfer-job-${LBL}-${IDX3}
 spec:
   template:
     spec:
@@ -97,7 +100,8 @@ spec:
 ---
 apiVersion: batch/v1
 kind: Job
-metadat  n  name: freesurfer-job-${LBL}-${IDX4}
+metadata:
+  name: freesurfer-job-${LBL}-${IDX4}
 spec:
   template:
     spec:
@@ -129,7 +133,8 @@ spec:
 ---
 apiVersion: batch/v1
 kind: Job
-metadat  n  name: freesurfer-job-${LBL}-${IDX5}
+metadata:
+  name: freesurfer-job-${LBL}-${IDX5}
 spec:
   template:
     spec:
