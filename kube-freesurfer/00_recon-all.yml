@@ -1,0 +1,25 @@
+---
+- name: Solo
+  hosts: ctrl
+  gather_facts: no
+  vars:
+    jobs:
+      - index: "900"
+      - index: "901"
+      - index: "902"
+      - index: "903"
+    label: "vd"
+
+  tasks:
+    - name: Create job files from template
+      template:
+        src: freesurfer-job-template.yml
+        dest: "/tmp/freesurfer-job-{{ item.index }}.yml"
+      with_items: "{{ jobs }}"
+      vars:
+        INDEX: "{{ item.index }}"
+        LABEL: "{{ label }}"
+
+    - name: Apply job files
+      command: kubectl apply -f "/tmp/freesurfer-job-{{ item.index }}.yml"
+      with_items: "{{ jobs }}"
