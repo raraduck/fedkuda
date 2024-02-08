@@ -18,20 +18,32 @@ sed "s/\${LBL}/$lbl/g; s/\${USR}/$usr/g; s/\${IDX1}/$idx1/g; s/\${IDX2}/$idx2/g;
 
 kubectl apply -f $new_file
 
-# Job 이름 정의
-job_name="freesurfer-job-${lbl}-${idx1}"
+# Job 완료 확인을 위한 함수 정의
+wait_for_job_completion() {
+    local job="$1"
+    echo "Waiting for job $job to complete..."
+    while true; do
+        # Job 상태 체크
+        if kubectl get job "$job" -o 'jsonpath={.status.conditions[?(@.type=="Complete")].status}' | grep -q "True"; then
+            echo "Job $job completed successfully."
+            return 0
+        elif kubectl get job "$job" -o 'jsonpath={.status.conditions[?(@.type=="Failed")].status}' | grep -q "True"; then
+            echo "Job $job failed."
+            return 1
+        else
+            echo "Still waiting for job $job to complete..."
+            sleep 1800
+        fi
+    done
+}
 
-# Job이 완료될 때까지 기다림
-while true; do
-    # Job 상태 체크
-    status=$(kubectl get job $job_name -o=jsonpath='{.status.conditions[?(@.type=="Complete")].status}')
-    
-    # Job 상태가 True면 완료됨
-    if [ "$status" == "True" ]; then
-        echo "Job $job_name completed successfully."
-        break
-    else
-        echo "Waiting for job $job_name to complete..."
-        sleep 3600  # 1시간 동안 대기
+# 생성된 Job들의 완료를 기다림
+for idx in $idx1 $idx2 $idx3 $idx4 $idx5; do
+    job_name="freesurfer-job-${lbl}-${idx}"
+    if ! wait_for_job_completion "$job_name"; then
+        echo "Error: Processing of job $job_name encountered an error."
+        exit 1
     fi
 done
+
+echo "All specified jobs completed successfully."
