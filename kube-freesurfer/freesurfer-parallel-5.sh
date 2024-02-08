@@ -17,3 +17,21 @@ new_file="freesurfer-job-${lbl}-${idx1}.yml"
 sed "s/\${LBL}/$lbl/g; s/\${USR}/$usr/g; s/\${IDX1}/$idx1/g; s/\${IDX2}/$idx2/g; s/\${IDX3}/$idx3/g; s/\${IDX4}/$idx4/g; s/\${IDX5}/$idx5/g" $original_file > $new_file
 
 kubectl apply -f $new_file
+
+# Job 이름 정의
+job_name="freesurfer-job-${lbl}-${idx1}"
+
+# Job이 완료될 때까지 기다림
+while true; do
+    # Job 상태 체크
+    status=$(kubectl get job $job_name -o=jsonpath='{.status.conditions[?(@.type=="Complete")].status}')
+    
+    # Job 상태가 True면 완료됨
+    if [ "$status" == "True" ]; then
+        echo "Job $job_name completed successfully."
+        break
+    else
+        echo "Waiting for job $job_name to complete..."
+        sleep 3600  # 1시간 동안 대기
+    fi
+done
