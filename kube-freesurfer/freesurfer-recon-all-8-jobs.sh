@@ -53,7 +53,7 @@ wait_for_job_completion() {
             echo "Error: Job $job failed. Details logged to $log_file."
             return 1
         else
-            echo "Still waiting for job $job to complete..."
+            echo "Still waiting for job $job to complete... (elapsed: $elapsed_time)"
             sleep 900
         fi
     done
