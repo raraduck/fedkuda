@@ -12,8 +12,6 @@ wait_for_job_completion() {
     # Job의 시작 시간을 Unix timestamp로 가져옴
     local start_time_str=$(kubectl get job "$job" -o jsonpath='{.status.startTime}')
     local start_time=$(date -d "$start_time_str" +%s)
-    
-    echo "Waiting for job $job to complete..."
 
     while true; do
         local current_time=$(date +%s)
