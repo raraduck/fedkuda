@@ -4,10 +4,10 @@ pipeline {
         stage('Round: 1 (919~942)') {
             steps {
                 script {
+                    def idx = 1
                     // 병렬 단계를 담을 맵
                     def parallelStagesMap = [:]
                     // 첫 번째 병렬 작업
-                    def idx = 1
                     def stageName1 = "Stage ${idx} - Node vd"
                     parallelStagesMap[stageName1] = {
                         bat """
@@ -43,10 +43,10 @@ pipeline {
         stage('Round: 2 (943~966)') {
             steps {
                 script {
+                    def idx = 2
                     // 병렬 단계를 담을 맵
                     def parallelStagesMap = [:]
                     // 첫 번째 병렬 작업
-                    def idx = 2
                     def stageName1 = "Stage ${idx} - Node vd"
                     parallelStagesMap[stageName1] = {
                         bat """
@@ -82,10 +82,10 @@ pipeline {
         stage('Round: 3 (967~990)') {
             steps {
                 script {
+                    def idx = 3
                     // 병렬 단계를 담을 맵
                     def parallelStagesMap = [:]
                     // 첫 번째 병렬 작업
-                    def idx = 3
                     def stageName1 = "Stage ${idx} - Node vd"
                     parallelStagesMap[stageName1] = {
                         bat """
