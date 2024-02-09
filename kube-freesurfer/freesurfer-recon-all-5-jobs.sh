@@ -38,23 +38,23 @@ wait_for_job_completion() {
         local elapsed_time=$((current_time-start_time))
 
         # Job의 실행 시간이 6시간(21600초)을 초과했는지 체크 0.5시간(1800초)
-        if [ "$elapsed_time" -gt 1800 ]; then
-            echo "Job $job is running for more than 0.5 hours. Attempting to terminate..."
+        if [ "$elapsed_time" -gt 21600 ]; then
+            echo "Warning: Job $job is running for more than 6 hours. Attempting to terminate..."
             kubectl delete job "$job"
-            echo "Job $job has been terminated after exceeding 0.5 hours of runtime." > $log_file
+            echo "Warning: Job $job has been terminated after exceeding 6 hours of runtime." > $log_file
             return 0
         fi
 
         # Job 상태 체크
         if kubectl get job "$job" -o 'jsonpath={.status.conditions[?(@.type=="Complete")].status}' | grep -q "True"; then
-            echo "Job $job completed successfully."
+            echo "INFO: Job $job completed successfully."
             return 0
         elif kubectl get job "$job" -o 'jsonpath={.status.conditions[?(@.type=="Failed")].status}' | grep -q "True"; then
-            echo "Job $job failed." > $log_file
+            echo "Error: Job $job failed." > $log_file
             echo "Error: Job $job failed. Details logged to $log_file."
             return 1
         else
-            echo "Still waiting for job $job to complete... (elapsed: $elapsed_time)"
+            echo "INFO: Still waiting for job $job to complete... (elapsed: $elapsed_time)"
             sleep 900
         fi
     done
