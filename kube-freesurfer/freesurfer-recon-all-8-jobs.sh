@@ -32,7 +32,7 @@ kubectl apply -f $new_file
 for idx in $idx1 $idx2 $idx3 $idx4 $idx5 $idx6 $idx7 $idx8; do
     job_name="freesurfer-recon-all-job-${lbl}-${idx}"
     echo "Processing job: $job_name"
-    if ! wait_for_job_completion "$job_name" 21600; then
+    if ! wait_for_job_completion "$job_name" 6; then
         # 에러 메시지는 각 Job의 로그 파일에 기록됩니다.
         echo "Error encountered with job $job_name. See logs/${job_name}.log for details."
     fi
