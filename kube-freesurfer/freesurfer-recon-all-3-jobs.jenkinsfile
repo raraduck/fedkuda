@@ -12,7 +12,7 @@ pipeline {
                     parallelStagesMap[stageName1] = {
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
-                        source freesurfer-recon-all-3-jobs.sh vd dwnusa 919 920 921"
+                        source freesurfer-recon-all-3-jobs.sh vd dwnusa 6 919 920 921"
                         """
                     }
 
@@ -21,7 +21,7 @@ pipeline {
                     parallelStagesMap[stageName2] = {
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
-                        source freesurfer-recon-all-3-jobs.sh vj jennyk0321 919 920 921"
+                        source freesurfer-recon-all-3-jobs.sh vj jennyk0321 6 919 920 921"
                         """
                     }
 
@@ -30,7 +30,7 @@ pipeline {
                     parallelStagesMap[stageName3] = {
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
-                        source freesurfer-recon-all-3-jobs.sh vk ksyint1111 919 920 921"
+                        source freesurfer-recon-all-3-jobs.sh vk ksyint1111 6 919 920 921"
                         """
                     }
 
@@ -50,7 +50,7 @@ pipeline {
                     parallelStagesMap[stageName1] = {
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
-                        source freesurfer-recon-all-3-jobs.sh vd dwnusa 919 920 921"
+                        source freesurfer-recon-all-3-jobs.sh vd dwnusa 6 919 920 921"
                         """
                     }
 
@@ -59,7 +59,7 @@ pipeline {
                     parallelStagesMap[stageName2] = {
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
-                        source freesurfer-recon-all-3-jobs.sh vj jennyk0321 919 920 921"
+                        source freesurfer-recon-all-3-jobs.sh vj jennyk0321 6 919 920 921"
                         """
                     }
 
@@ -68,7 +68,7 @@ pipeline {
                     parallelStagesMap[stageName3] = {
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
-                        source freesurfer-recon-all-3-jobs.sh vk ksyint1111 919 920 921"
+                        source freesurfer-recon-all-3-jobs.sh vk ksyint1111 6 919 920 921"
                         """
                     }
 
