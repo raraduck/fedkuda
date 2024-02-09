@@ -9,8 +9,6 @@ usr=$2
 idx1=$3
 idx2=$4
 idx3=$5
-idx4=$6
-idx5=$7
 
 
 # 현재 시간을 YYYYMMDDHHMMSS 형식으로 변수에 저장
@@ -23,17 +21,18 @@ logs_folder="logs_$current_time"
 mkdir -p $logs_folder
 
 # 원본 및 새 파일명 정의
-original_file="freesurfer-recon-all-5-jobs.yml"
-new_file="$logs_folder/freesurfer-recon-all-jobs-${lbl}-${idx1}-${idx2}-${idx3}-${idx4}-${idx5}.yml"
+original_file="freesurfer-recon-all-3-jobs.yml"
+new_file="$logs_folder/freesurfer-recon-all-jobs-${lbl}-${idx1}-${idx2}-${idx3}.yml"
 
 # sed를 사용하여 변수 대체하고 결과를 새 파일에 저장
-sed "s/\${LBL}/$lbl/g; s/\${USR}/$usr/g; s/\${IDX1}/$idx1/g; s/\${IDX2}/$idx2/g; s/\${IDX3}/$idx3/g; s/\${IDX4}/$idx4/g; s/\${IDX5}/$idx5/g" $original_file > $new_file
+sed "s/\${LBL}/$lbl/g; s/\${USR}/$usr/g; s/\${IDX1}/$idx1/g; s/\${IDX2}/$idx2/g; s/\${IDX3}/$idx3/g" $original_file > $new_file
 
 kubectl apply -f $new_file
 
 # 생성된 Job들의 완료를 기다림
-for idx in $idx1 $idx2 $idx3 $idx4 $idx5; do
+for idx in $idx1 $idx2 $idx3; do
     job_name="freesurfer-recon-all-job-${lbl}-${idx}"
+    echo "Processing job: $job_name"
     if ! wait_for_job_completion "$logs_folder/$job_name" 6; then
         # 에러 메시지는 각 Job의 로그 파일에 기록됩니다.
         echo "Error encountered with job $job_name. See $logs_folder/${job_name}.log for details."

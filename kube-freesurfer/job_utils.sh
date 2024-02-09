@@ -3,7 +3,7 @@
 # Job 완료 확인을 위한 함수 정의
 wait_for_job_completion() {
     local job="$1"
-    local log_file="logs/${job}.log"
+    local log_file="${job}.log"
     local max_runtime_hours="$2" # 함수의 두 번째 인자로 max_runtime을 시간 단위로 받음
 
     # 시간 단위의 max_runtime을 초 단위로 변환

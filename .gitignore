@@ -5,3 +5,4 @@ __pycache__
 *.state
 *.log
 logs
+logs_*
