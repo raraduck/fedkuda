@@ -5,7 +5,7 @@ wait_for_job_completion() {
     local logs_folder="$1"
     local job="$2"
     local log_file="${logs_folder}/${job}.log"
-    local max_runtime_hours="$2" # 함수의 두 번째 인자로 max_runtime을 시간 단위로 받음
+    local max_runtime_hours="$3" # 함수의 두 번째 인자로 max_runtime을 시간 단위로 받음
 
     # 시간 단위의 max_runtime을 초 단위로 변환
     local max_runtime=$(($max_runtime_hours * 3600))
