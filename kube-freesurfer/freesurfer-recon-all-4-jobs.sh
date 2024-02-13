@@ -23,7 +23,7 @@ logs_folder="logs_$current_time"
 mkdir -p $logs_folder
 
 # 원본 및 새 파일명 정의
-original_file="freesurfer-recon-all-3-jobs.yml"
+original_file="freesurfer-recon-all-4-jobs.yml"
 new_file="$logs_folder/freesurfer-recon-all-jobs-${lbl}-${idx1}-${idx2}-${idx3}-${idx4}.yml"
 
 # sed를 사용하여 변수 대체하고 결과를 새 파일에 저장
