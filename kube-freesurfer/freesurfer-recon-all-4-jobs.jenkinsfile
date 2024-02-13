@@ -1,0 +1,119 @@
+pipeline {
+    agent any
+    stages {
+        stage('Round: 1 (977 978 979 940 974 975 932 933 920 921 922 923)') {
+            steps {
+                script {
+                    // 병렬 단계를 담을 맵
+                    def parallelStagesMap = [:]
+                    // 첫 번째 병렬 작업
+                    def idx = 1
+                    def stageName1 = "Stage ${idx} - Node vd"
+                    parallelStagesMap[stageName1] = {
+                        bat """
+                        ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
+                        source freesurfer-recon-all-4-jobs.sh vd dwnusa 8 977 978 979 940"
+                        """
+                    }
+
+                    // 두 번째 병렬 작업
+                    def stageName2 = "Stage ${idx} - Node vj"
+                    parallelStagesMap[stageName2] = {
+                        bat """
+                        ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
+                        source freesurfer-recon-all-4-jobs.sh vj jennyk0321 8 974 975 932 933"
+                        """
+                    }
+
+                    // 세 번째 병렬 작업
+                    def stageName3 = "Stage ${idx} - Node vk"
+                    parallelStagesMap[stageName3] = {
+                        bat """
+                        ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
+                        source freesurfer-recon-all-4-jobs.sh vk ksyint1111 8 920 921 922 923"
+                        """
+                    }
+
+                    // 병렬 단계 실행
+                    parallel parallelStagesMap
+                }
+            }
+        }
+        stage('Round: 2 (941 942 963 964 934 935 936 937 924 925 926 927)') {
+            steps {
+                script {
+                    // 병렬 단계를 담을 맵
+                    def parallelStagesMap = [:]
+                    // 첫 번째 병렬 작업
+                    def idx = 2
+                    def stageName1 = "Stage ${idx} - Node vd"
+                    parallelStagesMap[stageName1] = {
+                        bat """
+                        ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
+                        source freesurfer-recon-all-4-jobs.sh vd dwnusa 8 941 942 963 964"
+                        """
+                    }
+
+                    // 두 번째 병렬 작업
+                    def stageName2 = "Stage ${idx} - Node vj"
+                    parallelStagesMap[stageName2] = {
+                        bat """
+                        ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
+                        source freesurfer-recon-all-4-jobs.sh vj jennyk0321 8 934 935 936 937"
+                        """
+                    }
+
+                    // 세 번째 병렬 작업
+                    def stageName3 = "Stage ${idx} - Node vk"
+                    parallelStagesMap[stageName3] = {
+                        bat """
+                        ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
+                        source freesurfer-recon-all-4-jobs.sh vk ksyint1111 8 924 925 926 927"
+                        """
+                    }
+
+                    // 병렬 단계 실행
+                    parallel parallelStagesMap
+                }
+            }
+        }
+        stage('Round: 3 (965 986 987 988 938 939 962 976 928 929 972 973)') {
+            steps {
+                script {
+                    // 병렬 단계를 담을 맵
+                    def parallelStagesMap = [:]
+                    // 첫 번째 병렬 작업
+                    def idx = 3
+                    def stageName1 = "Stage ${idx} - Node vd"
+                    parallelStagesMap[stageName1] = {
+                        bat """
+                        ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
+                        source freesurfer-recon-all-4-jobs.sh vd dwnusa 8 965 986 987 988"
+                        """
+                    }
+
+                    // 두 번째 병렬 작업
+                    def stageName2 = "Stage ${idx} - Node vj"
+                    parallelStagesMap[stageName2] = {
+                        bat """
+                        ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
+                        source freesurfer-recon-all-4-jobs.sh vj jennyk0321 8 938 939 962 976"
+                        """
+                    }
+
+                    // 세 번째 병렬 작업
+                    def stageName3 = "Stage ${idx} - Node vk"
+                    parallelStagesMap[stageName3] = {
+                        bat """
+                        ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
+                        source freesurfer-recon-all-4-jobs.sh vk ksyint1111 8 928 929 972 973"
+                        """
+                    }
+
+                    // 병렬 단계 실행
+                    parallel parallelStagesMap
+                }
+            }
+        }
+    }
+}
