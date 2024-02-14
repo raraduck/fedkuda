@@ -1,18 +1,19 @@
 pipeline {
     agent any
+    environment {
+        GRP = 'cluster10'
+        PRJ = 'test01'
+    }
 
     stages {
         // Stage1
         stage('Initially Deploy Model & Scripts') {
             steps {
                 script {
-                    bat '''
-                    echo "Initialilze Model"
-                    '''
-                    bat '''
-                    ssh jennyk0321@10.246.246.36 "cd /home2/jennyk0321/workspace/fedkuda/ans-fedkuda && \
-                    ansible-playbook -e grp=cluster10 02_init_deploy.yml"
-                    '''
+                    bat """
+                    ssh jennyk0321@10.246.246.36 \"cd /home2/jennyk0321/workspace/fedkuda/ans-fedkuda && \
+                    ansible-playbook -e 'grp=${env.GRP} prj=${env.PRJ}' 02_init_deploy.yml\"
+                    """
                 }
             }
         }
@@ -21,10 +22,10 @@ pipeline {
         stage('Run Solo') {
             steps {
                 script {
-                    bat '''
-                    ssh jennyk0321@10.246.246.36 "cd /home2/jennyk0321/workspace/fedkuda/ans-fedkuda && \
-                    ansible-playbook -e 'grp=cluster10' 02_solo.yml"
-                    '''
+                    bat """
+                    ssh jennyk0321@10.246.246.36 \"cd /home2/jennyk0321/workspace/fedkuda/ans-fedkuda && \
+                    ansible-playbook -e 'grp=${env.GRP} prj=${env.PRJ}' 02_solo.yml\"
+                    """
                 }
             }
         }
