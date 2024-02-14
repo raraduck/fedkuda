@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
                     bat """
-                    ssh jennyk0321@10.246.246.36 \"rm -rf /home2/jennyk0321/workspace/fedkuda/ans-fedkuda/models/${env.GRP}/${env.PRJ}\"
+                    ssh jennyk0321@10.246.246.36 \"rm -rf /home2/jennyk0321/workspace/fedkuda/ans-fedkuda/states/${env.GRP}/${env.PRJ}\"
                     """
                 }
             }
