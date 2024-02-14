@@ -6,6 +6,17 @@ pipeline {
     }
 
     stages {
+        // Stage0
+        stage('Empty group and project directory') {
+            steps {
+                script {
+                    bat """
+                    ssh jennyk0321@10.246.246.36 \"rm -rf /home2/jennyk0321/workspace/fedkuda/ans-fedkuda/models/${env.GRP}/${env.PRJ}\"
+                    """
+                }
+            }
+        }
+        
         // Stage1
         stage('Initially Deploy Model & Scripts') {
             steps {
