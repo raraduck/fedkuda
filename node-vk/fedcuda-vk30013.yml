@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: fedcuda-pv-vj
+  name: fedcuda-pv-vk
   labels:
     type: local
 spec:
@@ -13,12 +13,12 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: manual
   hostPath:
-    path: /home2/jennyk0321/2024_data
+    path: /home2/ksyint1111/2024_data
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: fedcuda-pvc-vj
+  name: fedcuda-pvc-vk
 spec:
   accessModes:
     - ReadWriteMany
@@ -33,23 +33,23 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fedcuda-deployment-vj30012
+  name: fedcuda-deployment-vk30013
   annotations:
-    kubernetes.io/change-cause: "fedkuda deployment vj30012 has nodeport 30012"
+    kubernetes.io/change-cause: "fedkuda deployment vk30013 has nodeport 30013"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: fedcuda-vj30012
+      app: fedcuda-vk30013
   template:
     metadata:
       labels:
-        app: fedcuda-vj30012
+        app: fedcuda-vk30013
     spec:
       nodeSelector:
-        key: vj
+        key: vk
       containers:
-      - name: fedcuda-vj30012
+      - name: fedcuda-vk30013
         image: dwnusa/fedcuda:v0.2
         ports:
           - containerPort: 22
@@ -64,18 +64,18 @@ spec:
       volumes:
       - name: fedcuda-volume
         persistentVolumeClaim:
-          claimName: fedcuda-pvc-vj
+          claimName: fedcuda-pvc-vk
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: fedcuda-nodeport-vj30012
+  name: fedcuda-nodeport-vk30013
 spec:
   type: NodePort
   selector:
-    app: fedcuda-vj30012
+    app: fedcuda-vk30013
   ports:
     - protocol: TCP
       port: 22
       targetPort: 22
-      nodePort: 30012
+      nodePort: 30013
