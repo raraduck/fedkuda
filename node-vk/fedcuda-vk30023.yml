@@ -50,7 +50,7 @@ spec:
         key: vk
       containers:
       - name: fedcuda-vk30023
-        image: dwnusa/fedcuda:v0.2
+        image: dwnusa/fedcuda:v0.3
         ports:
           - containerPort: 22
         resources:
