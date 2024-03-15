@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Round: 1 (CC0001~CC0009)') {
+        stage('Round: 1 (0001~0009)') {
             steps {
                 script {
                     // 병렬 단계를 담을 맵
@@ -12,7 +12,7 @@ pipeline {
                     parallelStagesMap[stageName1] = {
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
-                        source freesurfer-recon-all-3-jobs.sh vd dwnusa 6 CC0001 CC0002 CC0003"
+                        source freesurfer-recon-all-3-jobs.sh vd dwnusa 6 0001 0002 0003"
                         """
                     }
 
@@ -21,7 +21,7 @@ pipeline {
                     parallelStagesMap[stageName2] = {
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
-                        source freesurfer-recon-all-3-jobs.sh vj jennyk0321 6 CC0004 CC0005 CC0006"
+                        source freesurfer-recon-all-3-jobs.sh vj jennyk0321 6 0004 0005 0006"
                         """
                     }
 
@@ -30,7 +30,7 @@ pipeline {
                     parallelStagesMap[stageName3] = {
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
-                        source freesurfer-recon-all-3-jobs.sh vk ksyint1111 6 CC0007 CC0008 CC0009"
+                        source freesurfer-recon-all-3-jobs.sh vk ksyint1111 6 0007 0008 0009"
                         """
                     }
 
