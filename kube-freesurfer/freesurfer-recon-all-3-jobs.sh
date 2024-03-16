@@ -33,7 +33,6 @@ kubectl apply -f $new_file
 # 생성된 Job들의 완료를 기다림
 for idx in $idx1 $idx2 $idx3; do
     job_name="freesurfer-recon-all-job-${lbl}-${idx}"
-    job_name="${job_name,,}"  # Job 이름도 소문자로 변환
     if ! wait_for_job_completion "$logs_folder" "$job_name" $hlim; then
         # 에러 메시지는 각 Job의 로그 파일에 기록됩니다.
         echo "Error encountered with job $job_name. See $logs_folder/${job_name}.log for details."
