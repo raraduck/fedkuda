@@ -6,17 +6,18 @@ source job_utils.sh
 # 인자로부터 값 받기
 lbl=$1
 usr=$2
-hlim=$3
-idx1=$4
-idx2=$5
-idx3=$6
-idx4=$7
-idx5=$8
-idx6=$9
-idx7=${10}
-idx8=${11}
-idx9=${12}
-idx10=${13} # 수정된 부분
+outdir=$3
+hlim=$4
+idx1=$5
+idx2=$6
+idx3=$7
+idx4=$8
+idx5=$9
+idx6=${10}
+idx7=${11}
+idx8=${12} # 수정된 부분
+idx9=${13}
+idx10=${14} # 수정된 부분
 
 # 현재 시간을 YYYYMMDDHHMMSS 형식으로 변수에 저장
 current_time=$(date +%Y%m%d%H%M%S)
@@ -32,7 +33,7 @@ original_file="freesurfer-recon-all-10-jobs.yml"
 new_file="$logs_folder/freesurfer-recon-all-jobs-${lbl}-${idx1}-${idx2}-${idx3}-${idx4}-${idx5}-${idx6}-${idx7}-${idx8}-${idx9}-${idx10}.yml"
 
 # sed를 사용하여 변수 대체하고 결과를 새 파일에 저장
-sed "s/\${LBL}/$lbl/g; s/\${USR}/$usr/g; s/\${IDX1}/$idx1/g; s/\${IDX2}/$idx2/g; s/\${IDX3}/$idx3/g; s/\${IDX4}/$idx4/g; s/\${IDX5}/$idx5/g; s/\${IDX6}/$idx6/g; s/\${IDX7}/$idx7/g; s/\${IDX8}/$idx8/g; s/\${IDX9}/$idx9/g; s/\${IDX10}/$idx10/g" $original_file > $new_file
+sed "s/\${LBL}/$lbl/g; s/\${USR}/$usr/g; s/\${OUTDIR}/$outdir/g; s/\${IDX1}/$idx1/g; s/\${IDX2}/$idx2/g; s/\${IDX3}/$idx3/g; s/\${IDX4}/$idx4/g; s/\${IDX5}/$idx5/g; s/\${IDX6}/$idx6/g; s/\${IDX7}/$idx7/g; s/\${IDX8}/$idx8/g; s/\${IDX9}/$idx9/g; s/\${IDX10}/$idx10/g" $original_file > $new_file
 
 kubectl apply -f $new_file
 

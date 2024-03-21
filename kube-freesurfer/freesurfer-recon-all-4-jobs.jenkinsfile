@@ -12,7 +12,7 @@ pipeline {
                     parallelStagesMap[stageName1] = {
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
-                        source freesurfer-recon-all-4-jobs.sh vd dwnusa 8 977 978 979 940"
+                        source freesurfer-recon-all-4-jobs.sh vd dwnusa CC359 8 977 978 979 940"
                         """
                     }
 
@@ -21,7 +21,7 @@ pipeline {
                     parallelStagesMap[stageName2] = {
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
-                        source freesurfer-recon-all-4-jobs.sh vj jennyk0321 8 974 975 932 933"
+                        source freesurfer-recon-all-4-jobs.sh vj jennyk0321 CC359 8 974 975 932 933"
                         """
                     }
 
@@ -30,7 +30,7 @@ pipeline {
                     parallelStagesMap[stageName3] = {
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
-                        source freesurfer-recon-all-4-jobs.sh vk ksyint1111 8 920 921 922 923"
+                        source freesurfer-recon-all-4-jobs.sh vk ksyint1111 CC359 8 920 921 922 923"
                         """
                     }
 
@@ -50,7 +50,7 @@ pipeline {
                     parallelStagesMap[stageName1] = {
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
-                        source freesurfer-recon-all-4-jobs.sh vd dwnusa 8 941 942 963 964"
+                        source freesurfer-recon-all-4-jobs.sh vd dwnusa CC359 8 941 942 963 964"
                         """
                     }
 
@@ -59,7 +59,7 @@ pipeline {
                     parallelStagesMap[stageName2] = {
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
-                        source freesurfer-recon-all-4-jobs.sh vj jennyk0321 8 934 935 936 937"
+                        source freesurfer-recon-all-4-jobs.sh vj jennyk0321 CC359 8 934 935 936 937"
                         """
                     }
 
@@ -68,7 +68,7 @@ pipeline {
                     parallelStagesMap[stageName3] = {
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
-                        source freesurfer-recon-all-4-jobs.sh vk ksyint1111 8 924 925 926 927"
+                        source freesurfer-recon-all-4-jobs.sh vk ksyint1111 CC359 8 924 925 926 927"
                         """
                     }
 
@@ -88,7 +88,7 @@ pipeline {
                     parallelStagesMap[stageName1] = {
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
-                        source freesurfer-recon-all-4-jobs.sh vd dwnusa 8 965 986 987 988"
+                        source freesurfer-recon-all-4-jobs.sh vd dwnusa CC359 8 965 986 987 988"
                         """
                     }
 
@@ -97,7 +97,7 @@ pipeline {
                     parallelStagesMap[stageName2] = {
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
-                        source freesurfer-recon-all-4-jobs.sh vj jennyk0321 8 938 939 962 976"
+                        source freesurfer-recon-all-4-jobs.sh vj jennyk0321 CC359 8 938 939 962 976"
                         """
                     }
 
@@ -106,7 +106,7 @@ pipeline {
                     parallelStagesMap[stageName3] = {
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
-                        source freesurfer-recon-all-4-jobs.sh vk ksyint1111 8 928 929 972 973"
+                        source freesurfer-recon-all-4-jobs.sh vk ksyint1111 CC359 8 928 929 972 973"
                         """
                     }
 

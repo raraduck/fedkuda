@@ -11,7 +11,7 @@ spec:
       containers:
       - name: freesurfer-container
         image: freesurfer/freesurfer:7.2.0
-        command: ["/bin/bash", "-c", "source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid P${IDX1} -i /root/data/FREESURFER/PPMI/P${IDX1}.nii -sd /root/data/FREESURFER/FREESURFER_PPMI -all"]
+        command: ["/bin/bash", "-c", "mkdir -p /root/data/FREESURFER/FREESURFER_OUTDIR; source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid ${IDX1} -i /root/data/FREESURFER/OUTDIR/${IDX1}.nii.gz -sd /root/data/FREESURFER/FREESURFER_OUTDIR -all"]
         resources:
           requests:
             cpu: "3800m"
@@ -44,7 +44,7 @@ spec:
       containers:
       - name: freesurfer-container
         image: freesurfer/freesurfer:7.2.0
-        command: ["/bin/bash", "-c", "source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid P${IDX2} -i /root/data/FREESURFER/PPMI/P${IDX2}.nii -sd /root/data/FREESURFER/FREESURFER_PPMI -all"]
+        command: ["/bin/bash", "-c", "mkdir -p /root/data/FREESURFER/FREESURFER_OUTDIR; source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid ${IDX2} -i /root/data/FREESURFER/OUTDIR/${IDX2}.nii.gz -sd /root/data/FREESURFER/FREESURFER_OUTDIR -all"]
         resources:
           requests:
             cpu: "3800m"
@@ -77,7 +77,7 @@ spec:
       containers:
       - name: freesurfer-container
         image: freesurfer/freesurfer:7.2.0
-        command: ["/bin/bash", "-c", "source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid P${IDX3} -i /root/data/FREESURFER/PPMI/P${IDX3}.nii -sd /root/data/FREESURFER/FREESURFER_PPMI -all"]
+        command: ["/bin/bash", "-c", "mkdir -p /root/data/FREESURFER/FREESURFER_OUTDIR; source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid ${IDX3} -i /root/data/FREESURFER/OUTDIR/${IDX3}.nii.gz -sd /root/data/FREESURFER/FREESURFER_OUTDIR -all"]
         resources:
           requests:
             cpu: "3800m"
@@ -110,7 +110,7 @@ spec:
       containers:
       - name: freesurfer-container
         image: freesurfer/freesurfer:7.2.0
-        command: ["/bin/bash", "-c", "source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid P${IDX4} -i /root/data/FREESURFER/PPMI/P${IDX4}.nii -sd /root/data/FREESURFER/FREESURFER_PPMI -all"]
+        command: ["/bin/bash", "-c", "mkdir -p /root/data/FREESURFER/FREESURFER_OUTDIR; source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid ${IDX4} -i /root/data/FREESURFER/OUTDIR/${IDX4}.nii.gz -sd /root/data/FREESURFER/FREESURFER_OUTDIR -all"]
         resources:
           requests:
             cpu: "3800m"
@@ -143,7 +143,7 @@ spec:
       containers:
       - name: freesurfer-container
         image: freesurfer/freesurfer:7.2.0
-        command: ["/bin/bash", "-c", "source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid P${IDX5} -i /root/data/FREESURFER/PPMI/P${IDX5}.nii -sd /root/data/FREESURFER/FREESURFER_PPMI -all"]
+        command: ["/bin/bash", "-c", "mkdir -p /root/data/FREESURFER/FREESURFER_OUTDIR; source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid ${IDX5} -i /root/data/FREESURFER/OUTDIR/${IDX5}.nii.gz -sd /root/data/FREESURFER/FREESURFER_OUTDIR -all"]
         resources:
           requests:
             cpu: "3800m"
@@ -176,7 +176,7 @@ spec:
       containers:
       - name: freesurfer-container
         image: freesurfer/freesurfer:7.2.0
-        command: ["/bin/bash", "-c", "source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid P${IDX6} -i /root/data/FREESURFER/PPMI/P${IDX6}.nii -sd /root/data/FREESURFER/FREESURFER_PPMI -all"]
+        command: ["/bin/bash", "-c", "mkdir -p /root/data/FREESURFER/FREESURFER_OUTDIR; source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid ${IDX6} -i /root/data/FREESURFER/OUTDIR/${IDX6}.nii.gz -sd /root/data/FREESURFER/FREESURFER_OUTDIR -all"]
         resources:
           requests:
             cpu: "3800m"
@@ -209,7 +209,7 @@ spec:
       containers:
       - name: freesurfer-container
         image: freesurfer/freesurfer:7.2.0
-        command: ["/bin/bash", "-c", "source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid P${IDX7} -i /root/data/FREESURFER/PPMI/P${IDX7}.nii -sd /root/data/FREESURFER/FREESURFER_PPMI -all"]
+        command: ["/bin/bash", "-c", "mkdir -p /root/data/FREESURFER/FREESURFER_OUTDIR; source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid ${IDX7} -i /root/data/FREESURFER/OUTDIR/${IDX7}.nii.gz -sd /root/data/FREESURFER/FREESURFER_OUTDIR -all"]
         resources:
           requests:
             cpu: "3800m"
@@ -242,7 +242,7 @@ spec:
       containers:
       - name: freesurfer-container
         image: freesurfer/freesurfer:7.2.0
-        command: ["/bin/bash", "-c", "source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid P${IDX8} -i /root/data/FREESURFER/PPMI/P${IDX8}.nii -sd /root/data/FREESURFER/FREESURFER_PPMI -all"]
+        command: ["/bin/bash", "-c", "mkdir -p /root/data/FREESURFER/FREESURFER_OUTDIR; source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid ${IDX8} -i /root/data/FREESURFER/OUTDIR/${IDX8}.nii.gz -sd /root/data/FREESURFER/FREESURFER_OUTDIR -all"]
         resources:
           requests:
             cpu: "3800m"

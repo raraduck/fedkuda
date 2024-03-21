@@ -6,12 +6,13 @@ source job_utils.sh
 # 인자로부터 값 받기
 lbl=$1
 usr=$2
-hlim=$3
-idx1=$4
-idx2=$5
-idx3=$6
-idx4=$7
-idx5=$8
+outdir=$3
+hlim=$4
+idx1=$5
+idx2=$6
+idx3=$7
+idx4=$8
+idx5=$9
 
 
 # 현재 시간을 YYYYMMDDHHMMSS 형식으로 변수에 저장
@@ -28,7 +29,7 @@ original_file="freesurfer-recon-all-5-jobs.yml"
 new_file="$logs_folder/freesurfer-recon-all-jobs-${lbl}-${idx1}-${idx2}-${idx3}-${idx4}-${idx5}.yml"
 
 # sed를 사용하여 변수 대체하고 결과를 새 파일에 저장
-sed "s/\${LBL}/$lbl/g; s/\${USR}/$usr/g; s/\${IDX1}/$idx1/g; s/\${IDX2}/$idx2/g; s/\${IDX3}/$idx3/g; s/\${IDX4}/$idx4/g; s/\${IDX5}/$idx5/g" $original_file > $new_file
+sed "s/\${LBL}/$lbl/g; s/\${USR}/$usr/g; s/\${OUTDIR}/$outdir/g; s/\${IDX1}/$idx1/g; s/\${IDX2}/$idx2/g; s/\${IDX3}/$idx3/g; s/\${IDX4}/$idx4/g; s/\${IDX5}/$idx5/g" $original_file > $new_file
 
 kubectl apply -f $new_file
 
