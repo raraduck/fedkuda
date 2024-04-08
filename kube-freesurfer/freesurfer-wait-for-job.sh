@@ -31,7 +31,7 @@ while true; do
 
     # Job 완료 상태 확인
     if kubectl get job "$JOB_NAME" -o 'jsonpath={.status.conditions[?(@.type=="Complete")].status}' | grep -q "True"; then
-        echo "INFO: Job $JOB_NAME completed successfully." >> $LOG_FILE
+        echo "INFO: Job $JOB_NAME completed successfully."
         exit 0
     elif kubectl get job "$JOB_NAME" -o 'jsonpath={.status.conditions[?(@.type=="Failed")].status}' | grep -q "True"; then
         echo "Error: Job $JOB_NAME failed." >> $LOG_FILE

@@ -1,0 +1,33 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: freesurfer-recon-all-job-${LBL}-${IDX1}
+spec:
+  template:
+    spec:
+      nodeSelector:
+        key: ${LBL}
+      containers:
+      - name: freesurfer-container
+        image: freesurfer/freesurfer:7.2.0
+        command: ["/bin/bash", "-c", "mkdir -p /root/data/FREESURFER/FREESURFER_OUTDIR; source /usr/local/freesurfer/SetUpFreeSurfer.sh; recon-all -subjid ${IDX1} -i /root/data/FREESURFER/OUTDIR/${IDX1}.nii.gz -sd /root/data/FREESURFER/FREESURFER_OUTDIR -all"]
+        resources:
+          requests:
+            cpu: "9500m"
+          limits:
+            cpu: "10000m"
+        volumeMounts:
+        - name: license-volume
+          mountPath: /usr/local/freesurfer/.license
+        - name: data-volume
+          mountPath: /root/data
+      restartPolicy: Never
+      volumes:
+      - name: license-volume
+        hostPath:
+          path: /home2/${USR}/2024_data/FREESURFER/.license
+          type: File
+      - name: data-volume
+        persistentVolumeClaim:
+          claimName: fedcuda-pvc-${LBL}
