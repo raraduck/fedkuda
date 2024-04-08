@@ -39,6 +39,6 @@ while true; do
         exit 1
     else
         echo "INFO: Still waiting for job $JOB_NAME to complete... (elapsed hours: $(($ELAPSED_TIME / 3600)) / $MAX_RUNTIME_HOURS) (seconds: $ELAPSED_TIME)" >> $LOG_FILE
-        sleep 900
+        sleep 60
     fi
 done
