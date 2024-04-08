@@ -1,0 +1,86 @@
+pipeline {
+    agent any
+    stages {
+        stage('Round: 1 (0001~0009)') {
+            steps {
+                script {
+                    // 병렬 단계를 담을 맵
+                    def parallelStagesMap = [:]
+                    // 첫 번째 병렬 작업
+                    def idx = 1
+                    def stageName1 = "Stage ${idx} - Node vd"
+                    parallelStagesMap[stageName1] = {
+                        bat """
+                        ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
+                        helm install freesurfer-mri-convert-job-release ./freesurfer-mri-convert-job --set job.label="vd",job.srcLicense="/home2/dwnusa/2024_data/FREESURFER/.license",job.targetDir="/root/data/FREESURFER/CC359_MRI"
+                        """
+                    }
+                    // parallelStagesMap[stageName1] = {
+                    //     bat """
+                    //     ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
+                    //     source freesurfer-recon-all-1-jobs.sh vd /home2/dwnusa/2024_data/FREESURFER/.license /root/data/FREESURFER/CC359_MRI"
+                    //     """
+                    // }
+                    // // 두 번째 병렬 작업
+                    // def stageName2 = "Stage ${idx} - Node vj"
+                    // parallelStagesMap[stageName2] = {
+                    //     bat """
+                    //     ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
+                    //     source freesurfer-recon-all-1-jobs.sh vj jennyk0321 CC359 6 cc0004 cc0005 cc0006"
+                    //     """
+                    // }
+
+                    // // 세 번째 병렬 작업
+                    // def stageName3 = "Stage ${idx} - Node vk"
+                    // parallelStagesMap[stageName3] = {
+                    //     bat """
+                    //     ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
+                    //     source freesurfer-recon-all-1-jobs.sh vk ksyint1111 CC359 6 cc0007 cc0008 cc0009"
+                    //     """
+                    // }
+
+                    // 병렬 단계 실행
+                    parallel parallelStagesMap
+                }
+            }
+        }
+//         stage('Round: 2 (934~948)') {
+//             steps {
+//                 script {
+//                     // 병렬 단계를 담을 맵
+//                     def parallelStagesMap = [:]
+//                     // 첫 번째 병렬 작업
+//                     def idx = 2
+//                     def stageName1 = "Stage ${idx} - Node vd"
+//                     parallelStagesMap[stageName1] = {
+//                         bat """
+//                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
+//                         source freesurfer-recon-all-3-jobs.sh vd dwnusa 6 919 920 921"
+//                         """
+//                     }
+//
+//                     // 두 번째 병렬 작업
+//                     def stageName2 = "Stage ${idx} - Node vj"
+//                     parallelStagesMap[stageName2] = {
+//                         bat """
+//                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
+//                         source freesurfer-recon-all-3-jobs.sh vj jennyk0321 6 919 920 921"
+//                         """
+//                     }
+//
+//                     // 세 번째 병렬 작업
+//                     def stageName3 = "Stage ${idx} - Node vk"
+//                     parallelStagesMap[stageName3] = {
+//                         bat """
+//                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
+//                         source freesurfer-recon-all-3-jobs.sh vk ksyint1111 6 919 920 921"
+//                         """
+//                     }
+//
+//                     // 병렬 단계 실행
+//                     parallel parallelStagesMap
+//                 }
+//             }
+//         }
+    }
+}
