@@ -23,7 +23,7 @@ while true; do
 
     # 최대 실행 시간 초과 검사
     if [ "$ELAPSED_TIME" -gt "$MAX_RUNTIME_SECONDS" ]; then
-        echo "Warning: Job $JOB_NAME is running longer than $MAX_RUNTIME_HOURS hours. Attempting to terminate..." > $LOG_FILE
+        echo "Warning: Job $JOB_NAME is running longer than $MAX_RUNTIME_HOURS hours. Attempting to terminate..."
         kubectl delete job "$JOB_NAME"
         echo "Warning: Job $JOB_NAME has been terminated after exceeding $MAX_RUNTIME_HOURS hours of runtime." >> $LOG_FILE
         exit 1
@@ -38,7 +38,7 @@ while true; do
         echo "Error: Job $JOB_NAME failed. Details logged to $LOG_FILE."
         exit 1
     else
-        echo "INFO: Still waiting for job $JOB_NAME to complete... (elapsed hours: $(($ELAPSED_TIME / 3600)) / $MAX_RUNTIME_HOURS) (seconds: $ELAPSED_TIME)" >> $LOG_FILE
+        echo "INFO: Still waiting for job $JOB_NAME to complete... (elapsed hours: $(($ELAPSED_TIME / 3600)) / $MAX_RUNTIME_HOURS) (seconds: $ELAPSED_TIME)"
         sleep 60
     fi
 done
