@@ -12,7 +12,7 @@ pipeline {
                     parallelStagesMap[stageName1] = {
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
-                        helm install freesurfer-mri-convert-job-release ./freesurfer-mri-convert-job -f values-vd.yaml"
+                        helm install freesurfer-mri-convert-job-vd ./freesurfer-mri-convert-job -f values-vd.yaml"
                         """
                     }
 
@@ -21,7 +21,7 @@ pipeline {
                     parallelStagesMap[stageName2] = {
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
-                        helm install freesurfer-mri-convert-job-release ./freesurfer-mri-convert-job -f values-vj.yaml"
+                        helm install freesurfer-mri-convert-job-vj ./freesurfer-mri-convert-job -f values-vj.yaml"
                         """
                     }
 
@@ -30,7 +30,7 @@ pipeline {
                     parallelStagesMap[stageName3] = {
                         bat """
                         ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
-                        helm install freesurfer-mri-convert-job-release ./freesurfer-mri-convert-job -f values-vk.yaml"
+                        helm install freesurfer-mri-convert-job-vk ./freesurfer-mri-convert-job -f values-vk.yaml"
                         """
                     }
 
