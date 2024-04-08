@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: freesurfer-mri-convert-job-{{ .Values.job.label }}
+  name: {{ .Release.Name }}
 spec:
   template:
     spec:
