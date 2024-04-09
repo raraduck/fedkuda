@@ -1,0 +1,38 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  template:
+    spec:
+      nodeSelector:
+        key: {{ .Values.job.label }}
+      containers:
+      - name: freesurfer-container
+        image: freesurfer/freesurfer:7.2.0
+        command: ["/bin/bash", "-c"]
+        args:
+        - |
+          for folder in {{ .Values.job.sourcePattern }}; do
+            base=$(basename $folder)
+            mkdir -p {{ .Values.job.targetDir }}/${base}/
+            mri_convert ${folder}/mri/orig.mgz {{ .Values.job.targetDir }}/${base}/orig.nii.gz
+            mri_convert ${folder}/mri/aseg.mgz {{ .Values.job.targetDir }}/${base}/aseg.nii.gz
+            mri_convert ${folder}/mri/aparc+aseg.mgz {{ .Values.job.targetDir }}/${base}/aparc+aseg.nii.gz
+            mri_convert ${folder}/mri/brainmask.mgz {{ .Values.job.targetDir }}/${base}/brainmask.nii.gz
+            mri_convert ${folder}/mri/brain.mgz {{ .Values.job.targetDir }}/${base}/brain.nii.gz
+          done
+        volumeMounts:
+        - name: license-volume
+          mountPath: /usr/local/freesurfer/.license
+        - name: data-volume
+          mountPath: /root/data
+      restartPolicy: Never
+      volumes:
+      - name: license-volume
+        hostPath:
+          path: {{ .Values.job.srcLicense }}
+          type: File
+      - name: data-volume
+        persistentVolumeClaim:
+          claimName: fedcuda-pvc-{{ .Values.job.label }}

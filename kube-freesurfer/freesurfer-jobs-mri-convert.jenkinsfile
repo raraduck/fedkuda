@@ -1,0 +1,49 @@
+pipeline {
+    agent any
+    stages {
+        stage('mri-convert jobs in parallel') {
+            steps {
+                script {
+                    // 병렬 단계를 담을 맵
+                    def parallelStagesMap = [:]
+                    // 첫 번째 병렬 작업
+                    def idx = 1
+                    def stageName1 = "Stage ${idx} - Node vd"
+                    parallelStagesMap[stageName1] = {
+                        bat """
+                        ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
+                        helm uninstall freesurfer-mri-convert-job-vd && \
+                        helm install freesurfer-mri-convert-job-vd ./freesurfer-mri-convert-job -f ./freesurfer-mri-convert-job/values-vd.yaml && \
+                        source freesurfer-wait-for-job.sh freesurfer-mri-convert-job-vd logs_mri_convert 1"
+                        """
+                    }
+
+                    // 두 번째 병렬 작업
+                    def stageName2 = "Stage ${idx} - Node vj"
+                    parallelStagesMap[stageName2] = {
+                        bat """
+                        ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
+                        helm uninstall freesurfer-mri-convert-job-vj && \
+                        helm install freesurfer-mri-convert-job-vj ./freesurfer-mri-convert-job -f ./freesurfer-mri-convert-job/values-vj.yaml && \
+                        source freesurfer-wait-for-job.sh freesurfer-mri-convert-job-vj logs_mri_convert 1"
+                        """
+                    }
+
+                    // 세 번째 병렬 작업
+                    def stageName3 = "Stage ${idx} - Node vk"
+                    parallelStagesMap[stageName3] = {
+                        bat """
+                        ssh jennyk0321@10.246.246.36 "cd workspace/fedkuda/kube-freesurfer && \
+                        helm uninstall freesurfer-mri-convert-job-vk && \
+                        helm install freesurfer-mri-convert-job-vk ./freesurfer-mri-convert-job -f ./freesurfer-mri-convert-job/values-vk.yaml && \
+                        source freesurfer-wait-for-job.sh freesurfer-mri-convert-job-vk logs_mri_convert 1"
+                        """
+                    }
+
+                    // 병렬 단계 실행
+                    parallel parallelStagesMap
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,5 @@
+job:
+  label: "vd"
+  srcLicense: "/home2/dwnusa/2024_data/FREESURFER/.license"
+  sourcePattern: "/root/data/FREESURFER/FREESURFER_CC359/cc*"
+  targetDir: "/root/data/FREESURFER/CC359_MRI"
