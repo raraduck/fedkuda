@@ -4,3 +4,6 @@
 [submodule "ans-feddata"]
 	path = ans-feddata
 	url = https://github.com/raraduck/feddata.git
+[submodule "ans-fedseg"]
+	path = ans-fedseg
+	url = https://github.com/raraduck/fedseg.git
