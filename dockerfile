@@ -2,9 +2,9 @@
 FROM nvidia/cuda:12.3.1-base-ubuntu22.04
 
 RUN apt-get update && \
-    apt-get install -y python3.10 python3-pip openssh-server && \
+    apt-get install -y python3.10 python3-pip openssh-server libgl1-mesa-glx && \
     ln -s /usr/bin/python3.10 /usr/bin/python && \
-    pip3 install torchio torchvision torchsummary SimpleITK==2.2.1 tqdm opencv-python tensorboard natsort pandas matplotlib jupyterlab medmnist scikit-learn monai pillow tqdm nibabel medpy jupyterlab numpy libgl1-mesa-glx && \
+    pip3 install torchio torchvision torchsummary SimpleITK==2.2.1 tqdm opencv-python tensorboard natsort pandas matplotlib jupyterlab medmnist scikit-learn monai pillow tqdm nibabel medpy jupyterlab numpy && \
     mkdir /var/run/sshd && \
     echo 'root:root' | chpasswd && \
     sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
